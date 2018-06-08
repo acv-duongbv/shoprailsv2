@@ -25,17 +25,22 @@ html
               input.form-control placeholder="Search" type="text" 
             button.btn.btn-default type="submit"  Submit
           ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle data-toggle="dropdown" href="#" 
-                | bvduong76@gmail.com
-                span.caret
-              ul.dropdown-menu role="menu" 
-                li
-                  a href="#"  Thông tin
-                li
-                  a href="#"  Lịch sử mua hàng
-                li.divider
-                li
-                  a href="#"  Đăng xuất
-            
+            - if user_signed_in?
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href="#" 
+                  | bvduong76@gmail.com
+                  span.caret
+                ul.dropdown-menu role="menu" 
+                  li
+                    a href="#"  Thông tin
+                  li
+                    a href="#"  Lịch sử mua hàng
+                  li.divider
+                  li
+                    a  href= '/users/sign_out' data-method="delete" rel="nofollow" Đăng xuất
+            - else
+              li
+                a href='/users/sign_in' Login
+      p.notice =notice
+      p.alert =alert
       = yield
