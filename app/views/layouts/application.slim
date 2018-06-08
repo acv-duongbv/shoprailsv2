@@ -5,7 +5,37 @@ html
     = csrf_meta_tags 
     = csp_meta_tag
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield 
+    .container-fluid
+      nav.navbar.navbar-default role="navigation" 
+        .navbar-header
+          a.navbar-brand href="/"  My Shop
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a href="#" Hành động
+            li
+              a href="#" Phiêu lưu
+            li 
+              a href="#" Hài hước
+          form.navbar-form.navbar-left role="search" 
+            .form-group
+              input.form-control placeholder="Search" type="text" 
+            button.btn.btn-default type="submit"  Submit
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#" 
+                | bvduong76@gmail.com
+                span.caret
+              ul.dropdown-menu role="menu" 
+                li
+                  a href="#"  Thông tin
+                li
+                  a href="#"  Lịch sử mua hàng
+                li.divider
+                li
+                  a href="#"  Đăng xuất
+            
+      = yield
