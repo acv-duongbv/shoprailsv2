@@ -28,7 +28,7 @@ html
             - if user_signed_in?
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href="#" 
-                  | bvduong76@gmail.com
+                  | #{current_user.email}
                   span.caret
                 ul.dropdown-menu role="menu" 
                   li
