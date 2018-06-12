@@ -1,5 +1,10 @@
+
 class ProductsController < ApplicationController
   def index
-    @product = Product.all
+    @products = Product.all
+  end
+
+  def show
+    @product = Product.find_by_slug(params[:slug])
   end
 end

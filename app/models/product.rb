@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  include Sluggable
   REGEX_IMAGE_URL = %r{\.(gif|jpg|png)\Z}i
   Error_image = "Chi nhan file GIF, JPG, PNG"
   validates :name, :description, :price, :image_url, presence: true

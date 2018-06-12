@@ -1,3 +1,4 @@
+require "active_support"
 
 require_relative "webhoseio"
 Category.destroy_all
@@ -26,7 +27,7 @@ list_cate.each do |cate|
     Product.create!(name: item["name"],
                     description: item["description"],
                     price: item["price"],
-                    image_url: item["images"],
+                    image_url: item["images"].first,
                     category_id: cate_id)
   end
 end

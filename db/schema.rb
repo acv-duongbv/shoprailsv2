@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_073359) do
     t.text "description"
     t.decimal "price", precision: 8, scale: 2
     t.string "image_url"
+    t.string "slug"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

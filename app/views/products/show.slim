@@ -1,0 +1,9 @@
+.row
+  .col.col-lg-6
+    img src="#{@product.image_url}" width="400" height="400" 
+  .col.col-lg-6
+    h1 = @product.name
+    p = number_to_currency(@product.price)
+    = button_to "Add to cart", '/add_to_cart', class: 'btn btn-info'
+    <br/>
+    p= @product.description
