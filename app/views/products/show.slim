@@ -4,6 +4,6 @@
   .col.col-lg-6
     h1 = @product.name
     p = number_to_currency(@product.price)
-    = button_to "Add to cart", line_item_path(@product), class: 'btn btn-info'
+    = button_to "Add to cart", add_cart_path(@product), class: 'btn btn-info'
     <br/>
     p= @product.description
