@@ -1,7 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "active_support"
+
+require_relative "webhoseio"
+Category.destroy_all
+Product.destroy_all
+User.destroy_all
+
+Category.create!(name: "action")
+Category.create!(name: "adventure")
+Category.create!(name: "comedy")
+Category.create!(name: "cartoons")
+
+webhoseio = Webhoseio.new("dd00ac5e-6554-42bc-a01f-183a16b98f47")
+list_cate = ["action", "adventure", "comedy", "cartoons"]
+list_cate.each do |cate|
+  query_params = {
+    'q': "category:#{cate} category:movies",
+  }
+  puts query_params
+  output = webhoseio.query("productFilter", query_params)
+  cate_id = Category.find_by_name("#{cate}").id
+  output["products"].each do |item|
+    if item["images"].blank?
+      next
+    end
+    puts item["name"]
+    Product.create!(name: item["name"],
+                    description: item["description"],
+                    price: item["price"],
+                    image_url: item["images"].first,
+                    category_id: cate_id)
+  end
+end
