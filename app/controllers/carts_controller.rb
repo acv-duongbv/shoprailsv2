@@ -3,6 +3,7 @@ class CartsController < ApplicationController
 
   def show
     @line_items = LineItem.where(cart_id: @cart.id)
+    @line = LineItem.new
   end
 
   private
