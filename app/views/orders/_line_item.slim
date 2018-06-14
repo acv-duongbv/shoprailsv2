@@ -1,0 +1,10 @@
+- product = Product.find(line_item.product_id)
+tr 
+  td 
+    = image_tag("#{product.image_url}",size: "60x70")
+  td
+    = product.name
+  td 
+    = line_item.quantity
+  td 
+    = number_to_currency(product.price * line_item.quantity)

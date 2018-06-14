@@ -6,7 +6,7 @@ class Order < ApplicationRecord
 
   def default_values
     begin
-      key = SecureRandom.hex(16 / 4).upcase
+      key = SecureRandom.hex(7).upcase
     end until !Order.exists?(order_no: key)
     self.order_no ||= key # note self.status = 'P' if self.status.nil? might be safer (per @frontendbeauty)
   end
@@ -16,5 +16,9 @@ class Order < ApplicationRecord
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  def total_price
+    line_items.to_a.sum { |item| item.total_price }
   end
 end

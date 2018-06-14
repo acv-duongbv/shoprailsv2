@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_current_cart, only: [:index, :new]
 
-  def index
+  def show
+    @order = Order.find_by_order_no(params[:order_no])
+    @line_items = @order.line_items
   end
 
   def new
@@ -17,7 +19,7 @@ class OrdersController < ApplicationController
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      redirect_to show_order_path, notice: "Thông tin của bạn đã được lưu"
+      redirect_to show_order_path(@order.order_no), notice: "Thông tin của bạn đã được lưu"
     else
       render :new
     end
@@ -31,5 +33,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:name, :phone_number, :address)
+  end
+
+  def order_no_params
+    params.require(:order).permit(:order_no)
   end
 end

@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :address
       t.string :phone_number
-      t.string :status, default: "Waiting"
+      t.string :status, default: "waiting"
       t.datetime :purchased_at
       t.timestamps
     end
