@@ -1,5 +1,15 @@
 class OrdersController < ApplicationController
   before_action :set_current_cart, only: [:index, :new]
+  protect_from_forgery except: [:hook]
+
+  def hook
+    params.permit!
+    status = params[:payment_status]
+    if status == "Completed"
+      @order = Order.find(params[:invoice])
+      @order.update_attributes notification_params: params, status: "paid", transaction_id: params[:txn_id], purchased_at: Time.now
+    end
+  end
 
   def show
     @order = Order.find_by_order_no(params[:order_no])

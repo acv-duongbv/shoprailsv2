@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "/orders/new", to: "orders#new", as: "new_order"
   post "/orders", to: "orders#create", as: "orders"
   get "/order/:order_no", to: "orders#show", as: "show_order"
+  post "/hook" => "orders#hook"
+
   get "/:slug", to: "categories#show", as: "category"
 
   devise_for :users, controller: {sessions: "users/sessions"}

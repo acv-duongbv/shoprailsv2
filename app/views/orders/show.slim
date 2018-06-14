@@ -21,7 +21,7 @@ table.table style="width: 600px; margin: auto"
     - if @order.status.eql? "waiting"
       td 
         p style="font-size: 20px; font-weight: 300;color: red" Chưa thanh toán
-        button.btn.btn-danger  Thanh Toán ngay
+        = button_to "Thanh toán ngay", @order.paypal_url(show_order_path(@order.order_no))
     - else
       p Đã thanh toán
 br

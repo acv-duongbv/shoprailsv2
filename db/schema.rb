@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 2018_06_14_015844) do
     t.string "name"
     t.text "address"
     t.string "phone_number"
-    t.string "status", default: "waiting"
+    t.text "notification_params"
+    t.string "transaction_id"
     t.datetime "purchased_at"
+    t.string "status", default: "waiting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

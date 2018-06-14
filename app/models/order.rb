@@ -21,4 +21,21 @@ class Order < ApplicationRecord
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
+
+  def paypal_url(return_path)
+    byebug
+    values = {
+      business: "#{Rails.application.secrets.paypal_account}",
+      cmd: "_xclick",
+      upload: 1,
+      invoice: id,
+      amount: self.total_price,
+      item_name: self.name,
+      item_number: self.id,
+      quantity: "1",
+      notify_url: "#{Rails.application.secrets.app_host}/hook",
+      return: "#{Rails.application.secrets.app_host}#{return_path}",
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
 end
