@@ -13,4 +13,4 @@
       = render partial: "/line_items/line", collection: @line_items   
     .total-cart style="float: right"
       p Total: #{number_to_currency(@cart.total_price)} 
-      = button_to "Thanh toán" , "/orders", class: "btn btn-danger", method: :get
+      = button_to "Thanh toán" , new_order_path, class: "btn btn-danger", method: :get
