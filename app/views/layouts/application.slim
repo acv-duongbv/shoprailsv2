@@ -15,20 +15,18 @@ html
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
-              a href="/action" Hành động
+              a href="/category/action" Hành động
             li
-              a href="/adventure" Phiêu lưu
+              a href="/category/adventure" Phiêu lưu
             li 
-              a href="/comedy" Hài hước
+              a href="/category/comedy" Hài hước
             li 
-              a href="/cartoons" Hoạt hình
-          form.navbar-form.navbar-left role="search" 
-            .form-group
-              input.form-control placeholder="Search" type="text" 
-            button.btn.btn-default type="submit"  Submit
+              a href="/category/cartoons" Hoạt hình
+          
           ul.nav.navbar-nav.navbar-right
+         
             li 
-              a href='/mycart' My Cart
+              a href='/mycart' Giỏ hàng
             - if user_signed_in?
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href="#" 
@@ -45,6 +43,11 @@ html
             - else
               li
                 a href='/users/sign_in' Login
-      p.notice =notice
+
+          .navbar-form.navbar-right
+            input.form-control id="txt_order_no" placeholder="Search" type="text" 
+            button.btn.btn-default onClick="search_order()"  Tìm
+           
+      h3.text-center.notice style="color: green" =notice
       p.alert =alert
       = yield

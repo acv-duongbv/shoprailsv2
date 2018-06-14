@@ -21,9 +21,10 @@ table.table style="width: 600px; margin: auto"
     - if @order.status.eql? "waiting"
       td 
         p style="font-size: 20px; font-weight: 300;color: red" Chưa thanh toán
-        = button_to "Thanh toán ngay", @order.paypal_url(show_order_path(@order.order_no))
+        = button_to "Thanh toán ngay", @order.paypal_url(show_order_path(@order.order_no)),class: 'btn btn-danger'
     - else
-      p Đã thanh toán
+      td
+        p style="font-size: 20px; font-weight: 300;color: green" Đã thanh toán
 br
 h3.text-center Danh sách sản phẩm
 table.table style="width: 600px; margin: auto"

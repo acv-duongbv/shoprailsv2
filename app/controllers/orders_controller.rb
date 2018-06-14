@@ -5,15 +5,24 @@ class OrdersController < ApplicationController
   def hook
     params.permit!
     status = params[:payment_status]
+    @order = Order.find(params[:invoice])
     if status == "Completed"
-      @order = Order.find(params[:invoice])
       @order.update_attributes notification_params: params, status: "paid", transaction_id: params[:txn_id], purchased_at: Time.now
+    end
+    respond_to do |format|
+      format.json { head :ok }
+      format.html { head :ok }
+      format.js
     end
   end
 
   def show
     @order = Order.find_by_order_no(params[:order_no])
-    @line_items = @order.line_items
+    if @order.nil?
+      redirect_to root_path, notice: "Mã đơn hàng không đúng"
+    else
+      @line_items = @order.line_items
+    end
   end
 
   def new

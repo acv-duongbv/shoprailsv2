@@ -18,3 +18,9 @@ function editClick(id_line){
       location.reload();
    }});
 }
+
+function search_order(){
+  var order_no = $("#txt_order_no").val();
+  window.location.href = "/order/"+order_no;
+
+}

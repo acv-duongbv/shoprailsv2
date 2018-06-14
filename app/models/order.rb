@@ -23,7 +23,6 @@ class Order < ApplicationRecord
   end
 
   def paypal_url(return_path)
-    byebug
     values = {
       business: "#{Rails.application.secrets.paypal_account}",
       cmd: "_xclick",
