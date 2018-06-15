@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+gem 'will_paginate', '>= 3.0'
 gem 'stringex', '~> 2.6'
 gem 'webhoseio-ruby', '~> 1.0'
 gem 'rails', '~> 5.2.0'
