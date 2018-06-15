@@ -1,8 +1,9 @@
 .col.col-lg-3
-  = link_to image_tag("#{product.image_url}",size: "220x300") , product_path(product)
-  p = product.name
-  br
-  p = number_to_currency(product.price)
-  br
-  p = product.description 
-  br
+  .product_item style = "height: 500px; overflow: hidden; padding:5px"
+    = link_to image_tag("#{product.image_url}",size: "220x300") , product_path(product)
+    p = product.name
+    br
+    p = number_to_currency(product.price)
+    br
+    p = product.description 
+    br
