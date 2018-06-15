@@ -1,0 +1,16 @@
+- if @line_items.blank?
+  h1.text-center Empty cart
+- else
+  h1.text-center My cart
+  .tbl-cart style="width: 600px; margin: auto"
+    table.table
+      tr 
+        th Sản phẩm
+        th Tên
+        th Số lượng 
+        th Giá
+      tr 
+      = render partial: "/line_items/line", collection: @line_items   
+    .total-cart style="float: right"
+      p Total: #{number_to_currency(@cart.total_price)} 
+      = button_to "Thanh toán" , "/orders", class: "btn btn-danger", method: :get

@@ -4,7 +4,17 @@ class Product < ApplicationRecord
   Error_image = "Chi nhan file GIF, JPG, PNG"
   validates :name, :description, :price, :image_url, presence: true
   validates :price, numericality: {gather_than: 0}
-  # validates :name, uniqueness: true
   belongs_to :category
-  # validates :image_url, format: {with: REGEX_IMAGE_URL, message: Error_image}
+  before_destroy :check_if_has_line_item
+
+  private
+
+  def check_if_has_line_item
+    if line_items.empty?
+      return true
+    else
+      error.add(:base, "The cart has line item")
+      return false
+    end
+  end
 end
