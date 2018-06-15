@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:show]
 
   def show
-    @line_items = LineItem.where(cart_id: @cart.id)
+    @line_items = LineItem.where(cart_id: @cart.id).order("id DESC")
     @line = LineItem.new
   end
 

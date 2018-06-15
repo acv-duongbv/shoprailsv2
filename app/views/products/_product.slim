@@ -1,14 +1,13 @@
 .col.col-lg-3
   .product_item style = "height: 500px; overflow: hidden;margin:10px; padding:10px;border: 1px solid green;"
     = link_to image_tag("#{product.image_url}",size: "220x300") , product_path(product)
-    br
-    p style="overflow: hidden;text-overflow: ellipsis; display: -webkit-box;line-height: 16px;  max-height: 16px; -webkit-line-clamp: 1;   -webkit-box-orient: vertical;"
+    p.text-center style="font-size: 20; font-weight: 500; color: green;overflow: hidden;text-overflow: ellipsis; display: -webkit-box;line-height: 16px;  max-height: 16px; -webkit-line-clamp: 1;   -webkit-box-orient: vertical;"
       = product.name
     br
     .price style="position: relative; display: inline"
       p style="font-weight: 600; color: red"
         = number_to_currency(product.price)
     br
-    .description style="overflow: hidden;text-overflow: ellipsis; display: -webkit-box;line-height: 16px;  max-height: 48px; -webkit-line-clamp: 3;   -webkit-box-orient: vertical;"
+    .description style="color: blue;overflow: hidden;text-overflow: ellipsis; display: -webkit-box;line-height: 16px;  max-height: 48px; -webkit-line-clamp: 3;   -webkit-box-orient: vertical;"
       = product.description 
   

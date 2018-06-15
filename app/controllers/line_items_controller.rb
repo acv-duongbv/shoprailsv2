@@ -2,8 +2,9 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     puts params
-    product = Product.find_by_slug(params[:format])
-    @line_items = @cart.add_product(product.id)
+    product_id = params[:product][:id]
+    quantity = params[:product][:quantity]
+    @line_items = @cart.add_product(product_id, quantity)
     if @line_items.save!
       redirect_to("/mycart", :notice => "Thêm vào giỏ hàng thành công")
     end

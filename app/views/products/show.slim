@@ -4,6 +4,11 @@
   .col.col-lg-6
     h1 = @product.name
     p = number_to_currency(@product.price)
-    = button_to "Add to cart", add_cart_path(@product), class: 'btn btn-info'
+    = simple_form_for @product, :url => add_cart_path , method: :post do |f|
+      = f.input :id,as: :hidden, input_html: {value: "#{@product.id}"}
+      = f.input :quantity, label: "Số lượng" ,input_html: {min: 1, value: 1,type: "number", style: "width: 100px"}
+      = f.submit 'Thêm vào giỏ' , class: 'btn btn-info'
+
+
     <br/>
     p= @product.description
