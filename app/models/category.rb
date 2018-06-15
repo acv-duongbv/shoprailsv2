@@ -9,7 +9,6 @@ class Category < ApplicationRecord
     if products.empty?
       return true
     else
-      error.add(:base, " This category has a product")
       return false
     end
   end

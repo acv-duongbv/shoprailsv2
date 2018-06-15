@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   validates :name, :description, :price, :image_url, presence: true
   validates :price, numericality: {gather_than: 0}
   belongs_to :category
+  has_many :line_items, dependent: :destroy
   before_destroy :check_if_has_line_item
 
   private

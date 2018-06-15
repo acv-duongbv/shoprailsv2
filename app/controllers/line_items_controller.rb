@@ -5,7 +5,7 @@ class LineItemsController < ApplicationController
     product = Product.find_by_slug(params[:format])
     @line_items = @cart.add_product(product.id)
     if @line_items.save!
-      redirect_to("/", :notice => "Line item was successfully created")
+      redirect_to("/mycart", :notice => "Thêm vào giỏ hàng thành công")
     end
   end
 

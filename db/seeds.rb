@@ -7,11 +7,11 @@ User.destroy_all
 
 Category.create!(name: "action")
 Category.create!(name: "adventure")
-Category.create!(name: "comedy")
+Category.create!(name: "westerns")
 Category.create!(name: "cartoons")
 
 webhoseio = Webhoseio.new("dd00ac5e-6554-42bc-a01f-183a16b98f47")
-list_cate = ["action", "adventure", "comedy", "cartoons"]
+list_cate = ["action", "adventure", "westerns", "cartoons"]
 list_cate.each do |cate|
   query_params = {
     'q': "category:#{cate} category:movies",

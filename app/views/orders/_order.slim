@@ -1,0 +1,5 @@
+=  simple_form_for(order) do |f|
+  = f.input :name, label: "Tên", size: 40, input_html: {style: "width: 200px"}
+  = f.input :phone_number, label: "Số điện thoại",input_html: {style: "width: 200px"}
+  = f.input :address, label: "Địa chỉ "
+  = f.submit "Hoàn thành" ,input_html: { style: "margin: auto"}

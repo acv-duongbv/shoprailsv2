@@ -1,0 +1,16 @@
+- product = Product.find(line_cart.product_id)
+tr 
+  td 
+    = image_tag("#{product.image_url}",size: "60x70")
+  td
+    = product.name
+  td 
+    = simple_form_for 'edit' do |f|
+      = f.input :quantity, input_html: {min: 1, value: line_cart.quantity, id: "row#{line_cart.id}",type: "number", style: "width: 70px"}, label: false 
+ 
+  td 
+    = number_to_currency(product.price * line_cart.quantity)
+  td
+    button onClick="editClick(#{line_cart.id})"
+      = image_tag("/images/edit.png")
+    = link_to image_tag("/images/delete.png"), line_path(line_cart), method: :delete
