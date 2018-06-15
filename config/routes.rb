@@ -17,5 +17,9 @@ Rails.application.routes.draw do
 
   get "category/:slug", to: "categories#show", as: "category"
 
-  devise_for :users, controller: {sessions: "users/sessions"}
+  devise_for :users, controllers: {
+                       sessions: "users/sessions",
+                       registrations: "users/registrations",
+                       passwords: "users/passwords",
+                     }
 end

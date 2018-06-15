@@ -17,11 +17,20 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  respond_to :json
 
-  # protected
+  def create
+    super
+    session.options[:renew] = false
+  end
+
+  def destroy
+    super
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
 end

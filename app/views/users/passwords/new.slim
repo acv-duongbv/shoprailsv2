@@ -1,0 +1,7 @@
+.text-center style='width: 500px; margin: auto'
+  h2 Quên mật khẩu
+
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| 
+    = f.input :email, autofocus: true, autocomplete: "email" 
+    = f.submit "Send me reset password instructions" , class: 'btn btn-warning'
+  = render "users/shared/links" 
