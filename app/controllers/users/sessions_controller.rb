@@ -2,9 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action do
-    redirect_to new_user_session_path unless current_user && current_user.admin?
-  end
+
   # GET /resource/sign_in
   # def new
   #   super

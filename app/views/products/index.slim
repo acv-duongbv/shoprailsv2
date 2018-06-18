@@ -1,5 +1,5 @@
 .container
   .row 
     = render partial: 'product', collection: @products
-  .paginate style="font-size: 20px;width: 500px;margin: auto"
+  .paginate 
     = will_paginate @products

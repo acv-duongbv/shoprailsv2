@@ -1,6 +1,6 @@
-.row
+.row.product-detail
   .col.col-lg-6
-    img style='margin: auto;display: block;' src="#{@product.image_url}" width="400px" height="450px" 
+    img src="#{@product.image_url}"  
   .col.col-lg-6
     h1 = @product.name
     p = number_to_currency(@product.price)
