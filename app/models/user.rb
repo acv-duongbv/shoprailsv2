@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, :name, :phone_number, :address, presence: true
   validates :phone_number, numericality: true
+  has_many :orders
 end

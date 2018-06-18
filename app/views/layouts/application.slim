@@ -36,7 +36,7 @@ html
                   li
                     a href="/users/edit"  Thông tin
                   li
-                    a href="#"  Lịch sử mua hàng
+                    a href="/users/history"  Lịch sử mua hàng
                   li.divider
                   li
                     a  href= '/users/sign_out' data-method="delete" rel="nofollow" Đăng xuất
@@ -45,7 +45,7 @@ html
                 a href='/users/sign_in' Login
 
           .navbar-form.navbar-right
-            input.form-control id="txt_order_no" placeholder="Search" type="text" 
+            input.form-control id="txt_order_no" placeholder="Mã đơn hàng" type="text" 
             button.btn.btn-default onClick="search_order()"  Tìm
            
       h3.text-center.notice style="color: green" =notice

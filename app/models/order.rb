@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   validates :name, :phone_number, :address, presence: true
   validates :phone_number, numericality: true
   has_many :line_items, dependent: :destroy
+  belongs_to :user, optional: true
   before_save :default_values
 
   def default_values

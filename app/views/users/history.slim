@@ -1,0 +1,12 @@
+h1.text-center Lịch sử mua hàng
+- @stt = 0
+table.table
+  tr 
+    th STT
+    th Hình
+    th Tên
+    th Số lượng 
+    th Giá
+    th Ngày mua
+  tr 
+  = render partial: "order_line", collection: @orders

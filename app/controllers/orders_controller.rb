@@ -35,6 +35,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_item_from_cart(current_cart)
+    if current_user.present?
+      @order.user_id = current_user.id
+    end
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
