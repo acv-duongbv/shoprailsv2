@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   include Sluggable
+  validates :name, :slug, presence: true
   has_many :products
   before_destroy :check_if_has_product
 
