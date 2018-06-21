@@ -11,6 +11,14 @@ class LineItemsController < ApplicationController
   end
 
   def update
+    if params[:quantity].to_i < 1
+      respond_to do |format|
+        format.json { head :ok }
+        format.html { head :ok }
+        format.js
+      end
+      return nil
+    end
     attributes = params_line.clone
     @line = LineItem.find(params[:id])
     @line.update_attributes!(attributes)
