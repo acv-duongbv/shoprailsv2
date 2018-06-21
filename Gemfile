@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 gem 'factory_bot'
 gem 'will_paginate', '>= 3.0'
+gem 'rails-controller-testing'
 gem 'stringex', '~> 2.6'
 gem 'rails_admin', '~> 1.3'
 gem 'webhoseio-ruby', '~> 1.0'
