@@ -4,8 +4,8 @@
   tr
     td = @stt
     td
-      = image_tag("#{Product.find(line.product_id).image_url}",size: "60x60")
-    td = Product.find(line.product_id).name
+      = image_tag("#{line.product.image_url}",size: "60x60")
+    td = line.product.name
     td = line.quantity
     td = number_to_currency(line.total_price)
     td = order_line.purchased_at.localtime.strftime("%H:%M %d-%m-%Y")
