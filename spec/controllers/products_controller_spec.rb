@@ -1,18 +1,26 @@
 require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
-  describe "#index" do
-    let!(:category) { Category.create(name: "ct") }
-    let!(:product1) { Product.create(name: "New", category: category, description: "No description", price: 6, image_url: "google.com") }
-    let!(:product2) { Product.create(name: "New2", category: category, description: "No description", price: 6.5, image_url: "google.com") }
+  let!(:category) { create(:category) }
 
+  describe "#index" do
     it "get a list product" do
       products = []
-      products << product1
-      products << product2
+
+      products << create(:product, category: category)
+      products << create(:product, category: category)
       get :index
-      expect(assigns(:products)).to eq products
+      expect(assigns(:products).count).to eq products.count
       expect(response).to render_template("index")
+    end
+  end
+
+  describe "#show" do
+    it "get a show product" do
+      product1 = create(:product, category: category)
+      get :show, params: {slug: product1.slug}
+      expect(assigns(:product).name).to eq(product1.name)
+      expect(response).to render_template("show")
     end
   end
 end

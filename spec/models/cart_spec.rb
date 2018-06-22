@@ -16,8 +16,8 @@ RSpec.describe Cart, type: :model do
       new_cart = Cart.new
       new_cart.add_product(product1.id, 2)
       new_cart.add_product(product2.id, 1)
-      x = product1.price * 2 + product2.price * 1
-      expect(new_cart.total_price).to eq(x)
+      total_price = product1.price * 2 + product2.price * 1
+      expect(new_cart.total_price).to eq(total_price)
     end
   end
 end

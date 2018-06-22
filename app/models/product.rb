@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 
   private
 
-  def check_if_has_line_item
+  def check_if_has_line_item?
     if line_items.empty?
       return true
     else
