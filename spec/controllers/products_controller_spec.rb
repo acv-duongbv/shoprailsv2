@@ -5,7 +5,6 @@ RSpec.describe ProductsController, type: :controller do
   let!(:products) { create_list(:product, 2, category: category) }
   describe "#index" do
     it "get a list product" do
-      puts products
       get :index
       expect(assigns(:products).count).to eq products.count
       expect(response).to render_template("index")
