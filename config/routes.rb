@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "products#index"
 
   get "/products", to: "products#index"
@@ -13,9 +14,13 @@ Rails.application.routes.draw do
   get "/orders/new", to: "orders#new", as: "new_order"
   post "/orders", to: "orders#create", as: "orders"
   get "/order/:order_no", to: "orders#show", as: "show_order"
-  post "/hook" => "orders#hook"
-
+  post "/hook", to: "orders#hook"
+  get "/users/history", to: "users#history", as: "history"
   get "category/:slug", to: "categories#show", as: "category"
 
-  devise_for :users, controller: {sessions: "users/sessions"}
+  devise_for :users, controllers: {
+                       sessions: "users/sessions",
+                       registrations: "users/registrations",
+                       passwords: "users/passwords",
+                     }
 end

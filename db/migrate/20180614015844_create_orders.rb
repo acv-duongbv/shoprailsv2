@@ -8,6 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.text :notification_params
       t.string :transaction_id
       t.datetime :purchased_at
+      t.references :user, index: true
       t.string :status, default: "waiting"
       t.timestamps
     end

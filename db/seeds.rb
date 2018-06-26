@@ -3,7 +3,6 @@ require "active_support"
 require_relative "webhoseio"
 Category.destroy_all
 Product.destroy_all
-User.destroy_all
 
 Category.create!(name: "action")
 Category.create!(name: "adventure")

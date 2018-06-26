@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 2018_06_14_015844) do
     t.text "notification_params"
     t.string "transaction_id"
     t.datetime "purchased_at"
+    t.bigint "user_id"
     t.string "status", default: "waiting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_015844) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "admin", default: false
     t.string "name"
     t.text "address"
     t.string "phone_number"

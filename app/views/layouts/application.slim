@@ -34,18 +34,18 @@ html
                   span.caret
                 ul.dropdown-menu role="menu" 
                   li
-                    a href="#"  Thông tin
+                    =link_to "Thông tin", edit_user_registration_path
                   li
-                    a href="#"  Lịch sử mua hàng
+                    =link_to "Lịch sử mua hàng", "/users/history"
                   li.divider
                   li
-                    a  href= '/users/sign_out' data-method="delete" rel="nofollow" Đăng xuất
+                    =link_to "Đăng xuất", destroy_user_session_path, method: :delete
             - else
               li
-                a href='/users/sign_in' Login
+                =link_to "Đăng nhập", new_user_session_path
 
           .navbar-form.navbar-right
-            input.form-control id="txt_order_no" placeholder="Search" type="text" 
+            input.form-control id="txt_order_no" placeholder="Mã đơn hàng" type="text" 
             button.btn.btn-default onClick="search_order()"  Tìm
            
       h3.text-center.notice style="color: green" =notice

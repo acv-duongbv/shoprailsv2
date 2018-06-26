@@ -1,0 +1,11 @@
+.text-center style='width: 500px; margin: auto'
+  h2 Thay đổi mật khẩu
+
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| 
+    = f.input :reset_password_token , as: :hidden
+    = f.input :password, autofocus: true, autocomplete: "off" 
+    = f.input :password_confirmation, autocomplete: "off" 
+    = f.submit "Đổi mật khẩu" , class: 'btn btn-primary'
+  end 
+
+  = render "users/shared/links" 

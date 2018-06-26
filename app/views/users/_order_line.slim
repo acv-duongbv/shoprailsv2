@@ -1,0 +1,11 @@
+
+- order_line.line_items.each do |line|
+  - @stt += 1
+  tr
+    td = @stt
+    td
+      = image_tag("#{line.product.image_url}",size: "60x60")
+    td = line.product.name
+    td = line.quantity
+    td = number_to_currency(line.total_price)
+    td = order_line.purchased_at.localtime.strftime("%H:%M %d-%m-%Y")
