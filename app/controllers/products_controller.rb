@@ -1,8 +1,7 @@
-# frozen_string_literal: true
 
 class ProductsController < ApplicationController
   def index
-    @products = Product.paginate(page: params[:page], per_page: 8).order('price ASC')
+    @products = Product.paginate(:page => params[:page], :per_page => 8).order("price ASC")
   end
 
   def show
