@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LineItemsController < ApplicationController
   def create
     @cart = current_cart
@@ -6,7 +8,7 @@ class LineItemsController < ApplicationController
     quantity = params[:product][:quantity]
     @line_items = @cart.add_product(product_id, quantity)
     if @line_items.save!
-      redirect_to("/mycart", :notice => "Thêm vào giỏ hàng thành công")
+      redirect_to('/mycart', notice: 'Thêm vào giỏ hàng thành công')
     end
   end
 
