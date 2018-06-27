@@ -1,19 +1,19 @@
-require "rails_helper"
+# frozen_string_literal: true
+ 
+require 'rails_helper'
+ 
 RSpec.describe LineItem, type: :model do
   it { should belong_to(:cart) }
   it { should belong_to(:product) }
   it { should belong_to(:order) }
-  context "validate methods" do
+  context 'validate methods' do
     let!(:category) { create(:category) }
-    let!(:products) { create_list(:product, 2, category: category) }
-
-    it "total price" do
-      cart = Cart.new
-      line_item = LineItem.new
-      line_item.product_id = products.first.id
-      line_item.cart_id = cart.id
-      line_item.quantity = 3
-      expect(line_item.total_price).to eq(products.first.price * 3)
+    let!(:product) { create(:product, category: category) }
+    let!(:cart) { Cart.create }
+    let!(:line_item) { create(:line_item, product_id: product.id, cart_id: cart.id) }
+    it 'total price' do
+      expect(line_item.total_price).to eq(product.price * line_item.quantity)
     end
   end
 end
+ 

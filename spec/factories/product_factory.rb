@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+ 
 FactoryBot.define do
   factory :product do
     name { Faker::Appliance.equipment }
@@ -6,3 +8,4 @@ FactoryBot.define do
     image_url { Faker::Internet.url }
   end
 end
+ 
